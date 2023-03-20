@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style/reset.css" />
     <link rel="stylesheet" href="./style/style.css" />
-    
+    <script src="./script/database.js" defer></script>
+    <script src="./script/index.js" defer></script>
     <title>Weartake</title>
   </head>
   <body>
@@ -15,16 +16,17 @@
         <h1>Weartake</h1>
         <nav>
           <ul class="header-menu">
-            <li>Todos</li>
-            <li>Acessórios</li>
-            <li>Camisetas</li>
+            <li class="todos">Todos</li>
+            <li class="acessorios">Acessórios</li>
+            <li class="camisetas">Camisetas</li>
           </ul>
         </nav>
       </div>
     </header>
     <main>
       <section class="main-cards">
-        <ul></ul>
+        <ul id="vitrine" class="vitrine-products">
+        </ul>
       </section>
       <section class="main-details">
         <div class="main-search">
@@ -33,7 +35,7 @@
             type="text"
             placeholder="Digite aqui sua pesquisa"
           />
-          <button class="search-button">Pesquisar</button>
+          <button class="search-button" type="submit">Pesquisar</button>
         </div>
         <aside>
           <div class="cart-title">
@@ -45,15 +47,15 @@
           </div>
 
           <div class="cart-products">
-            <ul class="cart-list"></ul>
+            <ul class="cart-list" id="cartList"></ul>
           </div>
           <div class="cart-details">
             <div class="details-values">
-              <p>Quantidade:</p><span>0</span>
+              <p>Quantidade:</p><span id="quantidade">0</span>
             </div>
             <div class="details-values">
               <p>Total:</p>
-              <span>R$0,00</span>
+              <span id="valorTotal">R$0,00</span>
             </div>
 
           </div>
