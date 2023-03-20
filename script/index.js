@@ -4,7 +4,7 @@ let quantidade = document.querySelector("#quantidade")
 let quant = 0
 let valor = 0
 
-
+//cards da vitrine
 function productsList(list){
     vitrine.innerHTML = ""
     for(let i = 0; i < list.length; i++){
@@ -49,6 +49,7 @@ function productsList(list){
 }
 productsList(data)
 
+//cards do carrinho
 function createCartList(id, list){
     for(let i = 0; i < list.length; i++){
         if(id == list[i].id){
@@ -90,6 +91,8 @@ function createCartList(id, list){
     }
 }
 
+
+// Adicionar no carrinho
 vitrine.addEventListener("click", function(event){
     if(event.target.tagName === "BUTTON"){
         idProduto = event.composedPath()[1].id
@@ -114,6 +117,7 @@ vitrine.addEventListener("click", function(event){
     }
 })
 
+//Remover do carrinho
 cartList.addEventListener("click", function(event){
     if(event.target.tagName === "BUTTON"){
         idProduto = event.composedPath()[2].id.substring(2)
@@ -140,6 +144,8 @@ cartList.addEventListener("click", function(event){
     }
 })
 
+
+//filtrar por Camisetas
 function filterCamisetas(list){
     let camisetas = []
     for(let i = 0; i < list.length; i++){
@@ -147,10 +153,16 @@ function filterCamisetas(list){
             camisetas.push(list[i])
         }
     }
-
     productsList(camisetas)
 }
 
+let botaoCamisetas = document.querySelector(".camisetas")
+botaoCamisetas.addEventListener("click", function(){
+    filterCamisetas(data)
+})
+
+
+//filtrar por Acessórios
 function filterAcessorios(list){
     let acessorios = []
     for(let i = 0; i < list.length; i++){
@@ -161,21 +173,20 @@ function filterAcessorios(list){
     productsList(acessorios)
 }
 
-let botaoCamisetas = document.querySelector(".camisetas")
-botaoCamisetas.addEventListener("click", function(){
-    filterCamisetas(data)
-})
-
 let botaoAcessorios = document.querySelector(".acessorios")
 botaoAcessorios.addEventListener("click", function(){
     filterAcessorios(data)
 })
 
+
+//Filtrar por Todos
 let botaoTodos = document.querySelector(".todos")
 botaoTodos.addEventListener("click", function(){
     productsList(data)
 })
 
+
+//Pesquisar por Nome
 let pesquisar = document.querySelector(".search-button")
 pesquisar.addEventListener("click", function(){
     let input = document.querySelector(".search-input").value
@@ -187,4 +198,3 @@ pesquisar.addEventListener("click", function(){
         }
     }
 })
-
